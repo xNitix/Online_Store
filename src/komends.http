@@ -1,0 +1,38 @@
+# Dodawanie nowej osoby
+POST http://127.0.0.1:5000
+Content-Type: application/json
+
+{
+  "name": "Adam ",
+  "surname": "Nowak",
+  "job": "it"
+}
+
+POST http://127.0.0.1:5000/persons
+Content-Type: application/json
+
+{
+  "name": "Nowa",
+  "surname": "Osoba",
+  "login": "nowylogi",
+  "password": "haslo123",
+  "isAdmin": true
+}
+
+POST http://127.0.0.1:5000/dinosaurs
+Content-Type: application/json
+
+{
+    "name" : "Pteranodon",
+    "description" : "Latajacy oraz szybki dinozaur",
+    "type" : "latajacy",
+    "price" : 10.10,
+    "level" : 225,
+    "image" : "src/jpg/Dossier_Pteranodon.webp",
+    "sex" : "female"
+}
+
+# Usuwanie osoby o ID 1
+DELETE http://127.0.0.1:5000/persons/1
+
+DELETE http://127.0.0.1:5000/dinosaurs/1

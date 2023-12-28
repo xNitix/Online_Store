@@ -1,15 +1,13 @@
-/* AddProduct.css */
-
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  width: 100%;
 }
 
 .form-container {
-  max-width: 400px;
-  width: 100%;
+  width: 100%; 
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -18,7 +16,7 @@
 
 h2 {
   text-align: center;
-  color: #333;
+  color: white;
 }
 
 form {
@@ -33,12 +31,17 @@ label {
 }
 
 input,
-textarea {
+textarea,
+select {
   padding: 8px;
   margin: 5px 0 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
-  width: 100%;
+}
+
+textarea
+{
+  resize: none;
 }
 
 button {
@@ -53,4 +56,14 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  margin-top: 5px;
+}
+
+.success-message {
+  color: green;
+  margin-top: 10px;
 }

@@ -22,25 +22,70 @@ body {
 
 #product-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: rgb(172, 162, 162); 
-  padding-left: 100px; 
-  padding-right: 100px;
-  border-radius: 10px; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  background-color: rgb(172, 162, 162);
+  padding: 0 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .product-card {
   background-color: white;
   color: black;
-  margin: 10px;
+  margin: 10px; 
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 100%;
+  flex: 1 1 calc(25% - 20px); 
+  height: auto;
+  min-width: 200px;
+  min-height: 250px;
 }
+
+.product-card h1 {
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 768px) {
+  .product-card {
+    flex: 1 1 100%; 
+    min-width: 100%; 
+  }
+
+  .product-card h1 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .product-card {
+    flex: 1 1 calc((33.33% - 20px)); 
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .product-card {
+    flex: 1 1 calc((25% - 20px));
+  }
+}
+
+@media screen and (min-width: 1601px) {
+  .product-card {
+    flex: 1 1 calc((20% - 20px)); 
+  }
+}
+
+@media screen and (min-width: 2001px) {
+  .product-card {
+    flex: 1 1 calc((16.66% - 20px)); 
+  }
+}
+
+
+
 
 .product-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);

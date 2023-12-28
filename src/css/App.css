@@ -11,8 +11,8 @@ body {
 .app-container {
   width: 80%;
   margin: auto;
-  padding: 20px; 
-  border-radius: 10px; 
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .controls {
@@ -22,13 +22,13 @@ body {
 
 #product-list {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  background-color: rgb(172, 162, 162); 
-  padding-left: 100px; 
-  padding-right: 100px;
-  border-radius: 10px; 
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  background-color: rgb(172, 162, 162);
+  padding: 0 20px;
+  border-radius: 10px;
+  box-sizing: border-box;
 }
 
 .product-card {
@@ -37,13 +37,84 @@ body {
   margin: 10px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
-  width: 100%;
+  flex: 1 1 calc(25% - 20px);
+  height: auto;
+  min-width: 200px;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#product-list .product-card img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+#product-list .product-info {
+  flex-grow: 1;
+}
+
+#product-list .product-info h1 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#product-list .product-info p {
+  margin-bottom: 5px;
+  font-size: 0.7em;
+}
+
+#product-list .product-info div {
+  display: flex;
+  flex-direction: column;
+}
+
+#product-list .product-card h2 {
+  font-size: 0.7em;
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .product-card {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .product-card h1 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .product-card {
+    flex-basis: calc((33.33% - 20px));
+  }
+}
+
+@media screen and (min-width: 1201px) {
+  .product-card {
+    flex-basis: calc((25% - 20px));
+  }
+}
+
+@media screen and (min-width: 1601px) {
+  .product-card {
+    flex-basis: calc((20% - 20px));
+  }
+}
+
+@media screen and (min-width: 2001px) {
+  .product-card {
+    flex-basis: calc((16.66% - 20px));
+  }
 }
 
 .product-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   transform: scale(1.05);
 }
 
@@ -71,5 +142,5 @@ body {
 }
 
 .product-card img {
-  max-width: 50%; 
+  max-width: 50%;
 }

@@ -5,6 +5,7 @@ import Edit from "./Edit";
 import Login from "./login";
 import Register from "./Register";
 import AddProduct from "./AddProduct";
+import Cart from "./Cart"
 import './css/Top.css'
 import { jwtDecode } from "jwt-decode";
 
@@ -45,6 +46,9 @@ const Top = () => {
                 <Link to="/add">AddProduct</Link>
               </li>
               )}
+              <li>
+                <Link to="/Cart">Cart</Link>
+              </li>
             </ul>
           </nav>
         )}
@@ -54,6 +58,7 @@ const Top = () => {
           {isAdmin && <Route path="/users" element={<Kot />} />}
           <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
+          <Route path="/Cart" element={<Cart />} />
           {token && <Route path="/welcome" element={<h1>Witaj na stronie startowej!</h1>} />}
           {token && <Route path="/edit" element={<Edit />} />}
           {token && <Route path="/add" element={<AddProduct />} />}

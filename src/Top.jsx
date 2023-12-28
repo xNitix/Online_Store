@@ -1,13 +1,16 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import App from "./App";
-import Kot from "./Kot";
-import Edit from "./Edit";
-import Login from "./login";
-import Register from "./Register";
-import AddProduct from "./AddProduct";
-import Cart from "./Cart"
-import './css/Top.css'
-import { jwtDecode } from "jwt-decode";
+// Top.jsx
+
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import App from './App';
+import Kot from './Kot';
+import Edit from './Edit';
+import Login from './login';
+import Register from './Register';
+import AddProduct from './AddProduct';
+import Cart from './Cart';
+import './css/Top.css';
+import { jwtDecode } from 'jwt-decode';
 
 const Top = () => {
   const token = localStorage.getItem('token');
@@ -19,6 +22,12 @@ const Top = () => {
     isAdmin = decodedToken && decodedToken.isAdmin ? true : false;
     console.log(isAdmin);
   }
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
+
   return (
     <Router>
       <div className="top-container">
@@ -37,17 +46,20 @@ const Top = () => {
                 </li>
               )}
               {isAdmin && (
-              <li>
-                <Link to="/edit">ProductEdit</Link>
-              </li>
+                <li>
+                  <Link to="/edit">ProductEdit</Link>
+                </li>
               )}
               {isAdmin && (
-              <li>
-                <Link to="/add">AddProduct</Link>
-              </li>
+                <li>
+                  <Link to="/add">AddProduct</Link>
+                </li>
               )}
               <li>
                 <Link to="/Cart">Cart</Link>
+              </li>
+              <li className="logout-button">
+                <button onClick={handleLogout}>Logout</button>
               </li>
             </ul>
           </nav>

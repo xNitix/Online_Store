@@ -1,34 +1,55 @@
 .top-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .top-menu {
-    background-color: #10872a;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .top-menu ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-  }
-  
-  .top-menu li {
-    margin-right: 20px;
-  }
-  
-  .top-menu li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  .top-menu li a:hover {
-    color: #24dc34;
-  }
-  
+  position: relative; 
+}
+
+.top-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  z-index: 1000; 
+}
+
+.top-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.top-menu ul li {
+  margin-right: 20px;
+}
+
+.top-menu ul li:last-child {
+  margin-right: 0;
+  margin-left: auto; 
+}
+
+.top-menu a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.top-menu a:hover {
+  text-decoration: underline;
+}
+
+.logout-button button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 30px;
+}
+
+.logout-button button:hover {
+  background-color: darkred;
+}

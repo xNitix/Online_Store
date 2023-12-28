@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './css/App.css';
 
@@ -69,36 +69,31 @@ const App = () => {
     localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    window.location.href = '/';
-  };
-  
   const handleSortAsc = () => {
     setSortOrder("asc");
   };
-  
+
   const handleSortDesc = () => {
     setSortOrder("desc");
   };
-  
+
   const handleFilterType = (e) => {
     setTypeFilter(e.target.value);
   };
-  
+
   const handleFilterSex = (e) => {
     setSexFilter(e.target.value);
   };
-  
+
   const handleFilterName = (e) => {
     setNameFilter(e.target.value);
   };
-  
+
   const filteredData = data
     .filter((product) => (!typeFilter || product.type === typeFilter))
     .filter((product) => (!sexFilter || product.sex === sexFilter))
     .filter((product) => (!nameFilter || product.name.toLowerCase().includes(nameFilter.toLowerCase())));
-  
+
   const sortedData = [...filteredData].sort((a, b) =>
     sortOrder === "asc" ? a.price - b.price : b.price - a.price
   );
@@ -131,7 +126,6 @@ const App = () => {
         </div>
         <ProductList products={sortedData} addToCart={addToCart} />
       </div>
-      <button className="logout-button" onClick={handleLogout}>Logout</button>
     </div>
   );
 };

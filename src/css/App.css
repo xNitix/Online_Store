@@ -11,6 +11,7 @@ body {
 .app-container {
   width: 80%;
   margin: auto;
+  margin-top: 55px;
   padding: 20px;
   border-radius: 10px;
 }
@@ -125,20 +126,6 @@ body {
 
 #product-list p {
   font-size: 100%;
-}
-
-.logout-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: red;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.logout-button:hover {
-  background-color: darkred;
 }
 
 .product-card img {

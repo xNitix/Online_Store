@@ -4,13 +4,18 @@ import './css/App.css';
 
 const Product = ({ product }) => (
   <div className="product-card">
-    <h1>{product.name}</h1>
-    <p>Descritpion: {product.description}</p>
-    <h2>Type: {product.type}</h2>
-    <h2>Lvl: {product.level}</h2>
-    <h2>Sex: {product.sex}</h2>
-    <h2>Price: {product.price}</h2>
     <img src={product.image} alt={product.name} />
+
+    <div className="product-info">
+      <h1>{product.name}</h1>
+      <p>Descritpion: {product.description}</p>
+      <div>
+        <h2>Type: {product.type}</h2>
+        <h2>Lvl: {product.level}</h2>
+        <h2>Sex: {product.sex}</h2>
+        <h2>Price: {product.price}</h2>
+      </div>
+    </div>
   </div>
 );
 

@@ -6,11 +6,18 @@ import Login from "./login";
 import Register from "./Register";
 import AddProduct from "./AddProduct";
 import './css/Top.css'
+import { jwtDecode } from "jwt-decode";
 
 const Top = () => {
   const token = localStorage.getItem('token');
-  const isAdmin = localStorage.getItem('isAdmin') === 'true';
+  let isAdmin = false;
 
+  if (token) {
+    const decodedToken = jwtDecode(token);
+    console.log(decodedToken);
+    isAdmin = decodedToken && decodedToken.isAdmin ? true : false;
+    console.log(isAdmin);
+  }
   return (
     <Router>
       <div className="top-container">
@@ -18,7 +25,7 @@ const Top = () => {
           <nav className="top-menu">
             <ul>
               <li>
-                <Link to="/welcome">Strona startowa {!isAdmin && <p>Jesteś adminem!</p>}</Link>
+                <Link to="/welcome">Strona startowa </Link>
               </li>
               <li>
                 <Link to="/app">Products</Link>
@@ -28,20 +35,24 @@ const Top = () => {
                   <Link to="/users">Users</Link>
                 </li>
               )}
+              {isAdmin && (
               <li>
                 <Link to="/edit">ProductEdit</Link>
               </li>
+              )}
+              {isAdmin && (
               <li>
                 <Link to="/add">AddProduct</Link>
               </li>
+              )}
             </ul>
           </nav>
         )}
 
         <Routes>
-          <Route path="/register" element={<Register />} />
           {token && <Route path="/app" element={<App />} />}
           {isAdmin && <Route path="/users" element={<Kot />} />}
+          <Route path="/register" element={<Register />} />
           <Route path="/" element={<Login />} />
           {token && <Route path="/welcome" element={<h1>Witaj na stronie startowej!</h1>} />}
           {token && <Route path="/edit" element={<Edit />} />}

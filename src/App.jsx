@@ -105,8 +105,16 @@ const App = () => {
         </div>
         <ProductList products={sortedData} />
       </div>
+      <button className="logout-button" onClick={handleLogout}>
+        Wyloguj
+      </button>
     </div>
   );
+};
+
+const handleLogout = () => {
+  localStorage.removeItem('token');
+  window.location.href = '/';
 };
 
 Product.propTypes = {

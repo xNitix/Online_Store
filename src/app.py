@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, JWTManager, get_jwt
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from sqlalchemy import Column, Integer, String, Boolean, Double
@@ -68,14 +68,27 @@ def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
 
-    # Sprawdzenie, czy użytkownik o podanym 'username' istnieje w bazie danych
     user = Person.query.filter_by(login=username).first()
 
     if user and bcrypt.checkpw(password.encode('utf-8'), user.password):
-        access_token = create_access_token(identity=username)
+        print(f"User isAdmin: {user.isAdmin}")
+        access_token = create_access_token(identity=username, additional_claims={'isAdmin': user.isAdmin})
         return jsonify(token=access_token)
     else:
         return jsonify({"msg": "Bad username or password"}), 401
+    
+    
+@app.route('/users', methods=["GET"])
+@jwt_required()
+def protected():
+    current_user = get_jwt()
+    is_admin = current_user.get('isAdmin', False)
+    if is_admin:
+        # Tutaj wykonaj odpowiednie operacje tylko dla admina
+        return jsonify({"message": "Admin access granted"})
+    else:
+        return jsonify({"message": "User access granted"})
+    
     
 @app.route('/register', methods=['POST'])
 def register():
@@ -99,12 +112,6 @@ def register():
     db.session.commit()
     return jsonify({"message": "Registration successful"}), 201
     
-    
-@app.route("/protected", methods=["GET"])
-@jwt_required()
-def protected():
-    current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user), 200
 
 @app.route('/persons', methods=['GET', 'POST'])
 def manage_persons():
@@ -138,6 +145,18 @@ def get_or_delete_person(person_id):
         db.session.delete(person)
         db.session.commit()
         return jsonify({"message": "Person deleted"})
+    
+@app.route('/persons/<int:person_id>', methods=['PUT'])
+def change_user_role(person_id):
+    data = request.json
+    user = Person.query.get_or_404(person_id)
+
+    if 'isAdmin' in data:
+        user.isAdmin = data['isAdmin']
+        db.session.commit()
+        return jsonify({"message": "User role updated"}), 200
+    else:
+        return jsonify({"error": "Invalid request"}), 400
     
 #-----------------------Dinosaurs-----------------------#    
     

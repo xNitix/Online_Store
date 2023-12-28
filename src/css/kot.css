@@ -1,0 +1,43 @@
+/* Resetowanie domyślnych stylów dla tabeli */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Jasne tło dla tabeli */
+  }
+  
+  /* Stylizacja nagłówków tabeli */
+  th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Stylizacja komórek tabeli */
+  td {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+  }
+  
+  /* Stylizacja nieparzystych wierszy */
+  tr:nth-child(odd) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Stylizacja przycisku do usuwania */
+  .delete-button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .delete-button:hover {
+    background-color: #d32f2f;
+  }
+  

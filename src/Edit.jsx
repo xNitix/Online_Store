@@ -5,6 +5,7 @@ import './css/App.css';
 const Product = ({ product, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedProduct, setEditedProduct] = useState({ ...product });
+  const [validationErrors, setValidationErrors] = useState({});
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -13,9 +14,30 @@ const Product = ({ product, onEdit, onDelete }) => {
   const handleCancelEdit = () => {
     setIsEditing(false);
     setEditedProduct({ ...product });
+    setValidationErrors({});
+  };
+
+  const validateForm = () => {
+    const errors = {};
+
+    if (!editedProduct.type) {
+      errors.type = 'Please select a type.';
+    }
+
+    if (!editedProduct.sex) {
+      errors.sex = 'Please select a sex.';
+    }
+
+    setValidationErrors(errors);
+
+    return Object.keys(errors).length === 0;
   };
 
   const handleSaveEdit = async () => {
+    if (!validateForm()) {
+      return;
+    }
+
     try {
       const response = await fetch(`http://127.0.0.1:5000/dinosaurs/${editedProduct.id}`, {
         method: 'PUT',
@@ -26,12 +48,10 @@ const Product = ({ product, onEdit, onDelete }) => {
       });
 
       if (response.ok) {
-        // Aktualizacja danych dinozaura zakończona sukcesem
         setIsEditing(false);
         onEdit(editedProduct);
         alert('Dinosaur data updated successfully!');
       } else {
-        // Błąd podczas aktualizacji danych dinozaura
         alert('Error updating dinosaur data');
       }
     } catch (error) {
@@ -50,11 +70,9 @@ const Product = ({ product, onEdit, onDelete }) => {
         });
 
         if (response.ok) {
-          // Usunięcie danych dinozaura zakończone sukcesem
           onDelete(editedProduct.id);
           alert('Dinosaur deleted successfully!');
         } else {
-          // Błąd podczas usuwania danych dinozaura
           alert('Error deleting dinosaur data');
         }
       } catch (error) {
@@ -88,7 +106,13 @@ const Product = ({ product, onEdit, onDelete }) => {
             </div>
             <div className="edit-field">
               <label>Type:</label>
-              <input type="text" name="type" value={editedProduct.type} onChange={handleInputChange} />
+              <select name="type" value={editedProduct.type} onChange={handleInputChange}>
+                <option value="">Select Type</option>
+                <option value="land">Land</option>
+                <option value="water">Water</option>
+                <option value="flying">Flying</option>
+              </select>
+              {validationErrors.type && <p className="error-message">{validationErrors.type}</p>}
             </div>
             <div className="edit-field">
               <label>Level:</label>
@@ -96,7 +120,12 @@ const Product = ({ product, onEdit, onDelete }) => {
             </div>
             <div className="edit-field">
               <label>Sex:</label>
-              <input type="text" name="sex" value={editedProduct.sex} onChange={handleInputChange} />
+              <select name="sex" value={editedProduct.sex} onChange={handleInputChange}>
+                <option value="">Select Sex</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              {validationErrors.sex && <p className="error-message">{validationErrors.sex}</p>}
             </div>
             <div className="edit-field">
               <label>Price:</label>

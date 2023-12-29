@@ -137,7 +137,7 @@ const App = () => {
             />
           </div>
           <div className="sort-buttons">
-            <button onClick={handleSortAsc}>Sort Ascending</button>
+            <button onClick={handleSortAsc}>Sort Ascending</button >
             <button onClick={handleSortDesc}>Sort Descending</button>
           </div>
         </div>

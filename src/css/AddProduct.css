@@ -13,11 +13,12 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 525px;
+  background-color: rgba(252, 251, 241, 0.963);
 }
 
 h2 {
   text-align: center;
-  color: white;
+  color: rgb(34, 33, 33);
 }
 
 form {

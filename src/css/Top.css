@@ -54,7 +54,7 @@
   background-color: darkred;
 }
 
-.login-button button {
+.login-button2 button {
   background-color: rgb(113, 163, 31);
   color: white;
   padding: 10px;
@@ -65,6 +65,6 @@
   margin-right: 30px;
 }
 
-.login-button button:hover {
+.login-button2 button:hover {
   background-color: rgb(75, 212, 82);
 }

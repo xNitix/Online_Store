@@ -68,7 +68,7 @@ const Top = () => {
               </li>
               )}
               {!token && (
-              <li className="login-button">
+              <li className="login-button2">
                 <button onClick={handleLogIn}>Login</button>
               </li>
               )}

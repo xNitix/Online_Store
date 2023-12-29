@@ -42,15 +42,15 @@ const Login = () => {
         onChange={(e) => setPassword(e.target.value)}
       />
       {error && <p className="login-error">{error}</p>}
-      <button type="submit" className="login-button">
+      <button type="submit" className="login-page-button">
         Zaloguj się
       </button>
-
-        <Link to="/register">
-        <button className="register-button">
+      
+      <Link to="/register" id="FULL_WIDTH">
+        <button className='login-page-button' id="reg-button">
           Register
         </button>
-        </Link>
+      </Link>
     </form>
 
   </div>

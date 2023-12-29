@@ -47,7 +47,7 @@ const UsersPage = () => {
   }, []);
 
   return (
-    <div>
+    <div id="table-container">
       <h1>Lista użytkowników</h1>
       <table>
         <thead>

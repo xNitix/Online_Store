@@ -100,10 +100,12 @@ const Product = ({ product, onEdit, onDelete }) => {
               <label>Name:</label>
               <input type="text" name="name" value={editedProduct.name} onChange={handleInputChange} />
             </div>
+
             <div className="edit-field">
               <label>Description:</label>
               <textarea name="description" value={editedProduct.description} onChange={handleInputChange} />
             </div>
+
             <div className="edit-field">
               <label>Type:</label>
               <select name="type" value={editedProduct.type} onChange={handleInputChange}>
@@ -114,10 +116,7 @@ const Product = ({ product, onEdit, onDelete }) => {
               </select>
               {validationErrors.type && <p className="error-message">{validationErrors.type}</p>}
             </div>
-            <div className="edit-field">
-              <label>Level:</label>
-              <input type="text" name="level" value={editedProduct.level} onChange={handleInputChange} />
-            </div>
+
             <div className="edit-field">
               <label>Sex:</label>
               <select name="sex" value={editedProduct.sex} onChange={handleInputChange}>
@@ -127,6 +126,12 @@ const Product = ({ product, onEdit, onDelete }) => {
               </select>
               {validationErrors.sex && <p className="error-message">{validationErrors.sex}</p>}
             </div>
+
+            <div className="edit-field">
+              <label>Level:</label>
+              <input type="text" name="level" value={editedProduct.level} onChange={handleInputChange} />
+            </div>
+        
             <div className="edit-field">
               <label>Price:</label>
               <input type="text" name="price" value={editedProduct.price} onChange={handleInputChange} />
@@ -147,8 +152,8 @@ const Product = ({ product, onEdit, onDelete }) => {
             <p>Description: {editedProduct.description}</p>
             <div>
               <h2>Type: {editedProduct.type}</h2>
-              <h2>Level: {editedProduct.level}</h2>
               <h2>Sex: {editedProduct.sex}</h2>
+              <h2>Level: {editedProduct.level}</h2>
               <h2>Price: {editedProduct.price}</h2>
             </div>
           </>

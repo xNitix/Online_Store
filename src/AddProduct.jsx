@@ -106,6 +106,21 @@ const AddProduct = () => {
       <div className="form-container">
         <h2>Dinosaur adding form</h2>
         <form onSubmit={handleSubmit}>
+          {validationErrors.image && (
+            <p className="error-message">{validationErrors.image}</p>
+          )}
+          {imagePreview && <img src={imagePreview} alt="Image Preview" />} 
+
+          <label>Image:</label>
+          <input
+            type="text"
+            name="image"
+            value={formData.image}
+            onChange={handleChange}
+            required
+          />
+            
+
           <label>Name:</label>
           <input
             type="text"
@@ -126,7 +141,7 @@ const AddProduct = () => {
           {validationErrors.description && (
             <p className="error-message">{validationErrors.description}</p>
           )}
-
+  
           <label>Type:</label>
           <select name="type" value={formData.type} onChange={handleChange} required>
             <option value="">Select Type</option>
@@ -135,16 +150,14 @@ const AddProduct = () => {
             <option value="flying">Flying</option>
           </select>
           {validationErrors.type && <p className="error-message">{validationErrors.type}</p>}
-
-          <label>Price:</label>
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            required
-          />
-          {validationErrors.price && <p className="error-message">{validationErrors.price}</p>}
+          
+          <label>Sex:</label>
+          <select name="sex" value={formData.sex} onChange={handleChange} required>
+            <option value="">Select Sex</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          {validationErrors.sex && <p className="error-message">{validationErrors.sex}</p>}
 
           <label>Level:</label>
           <input
@@ -156,26 +169,15 @@ const AddProduct = () => {
           />
           {validationErrors.level && <p className="error-message">{validationErrors.level}</p>}
 
-          <label>Image:</label>
+          <label>Price:</label>
           <input
-            type="text"
-            name="image"
-            value={formData.image}
+            type="number"
+            name="price"
+            value={formData.price}
             onChange={handleChange}
             required
           />
-          {validationErrors.image && (
-            <p className="error-message">{validationErrors.image}</p>
-          )}
-          {imagePreview && <img src={imagePreview} alt="Image Preview" />}
-
-          <label>Sex:</label>
-          <select name="sex" value={formData.sex} onChange={handleChange} required>
-            <option value="">Select Sex</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-          {validationErrors.sex && <p className="error-message">{validationErrors.sex}</p>}
+          {validationErrors.price && <p className="error-message">{validationErrors.price}</p>}
 
           <button type="submit">Add Dinosaur</button>
         </form>

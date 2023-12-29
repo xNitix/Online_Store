@@ -21,8 +21,8 @@ const Product = ({ product, addToCart, isLoggedIn, updateLoginStatus  }) => {
         <p>Description: {product.description}</p>
         <div>
           <h2>Type: {product.type}</h2>
-          <h2>Level: {product.level}</h2>
           <h2>Sex: {product.sex}</h2>
+          <h2>Level: {product.level}</h2>
           <h2>Price: {product.price}</h2>
         </div>
       </div>

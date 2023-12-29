@@ -156,3 +156,19 @@ body {
   width: 50%;
   text-align: right;
 }
+
+.edit-delete-button
+{
+  width: 45%;
+  margin-left: 2px;
+}
+
+#BADCOLOR
+{
+  background-color: rgb(230, 94, 30);
+}
+
+.marginesy
+{
+  margin-right: 3px;
+}

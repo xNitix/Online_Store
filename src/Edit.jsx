@@ -156,14 +156,13 @@ const Product = ({ product, onEdit, onDelete }) => {
       </div>
       {isEditing ? (
         <div>
-          <button onClick={handleSaveEdit}>Save</button>
-          <button onClick={handleCancelEdit}>Cancel</button>
-          <button onClick={handleDelete}>Delete</button>
+          <button className="edit-delete-button" onClick={handleSaveEdit}>Save</button>
+          <button className="edit-delete-button" id="BADCOLOR" onClick={handleCancelEdit}>Cancel</button>
         </div>
       ) : (
         <div>
-          <button onClick={handleEdit}>Edit</button>
-          <button onClick={handleDelete}>Delete</button>
+          <button className="edit-delete-button" onClick={handleEdit}>Edit</button>
+          <button className="edit-delete-button" id="BADCOLOR" onClick={handleDelete}>Delete</button>
         </div>
       )}
     </div>
@@ -280,8 +279,8 @@ const App = () => {
             />
           </div>
           <div className="sort-buttons">
-            <button onClick={handleSortAsc}>Sort Ascending</button>
-            <button onClick={handleSortDesc}>Sort Descending</button>
+            <button className='marginesy' onClick={handleSortAsc}>Sort Ascending</button>
+            <button  onClick={handleSortDesc}>Sort Descending</button>
           </div>
         </div>
 

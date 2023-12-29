@@ -14,8 +14,13 @@ const AddProduct = () => {
 
   const [validationErrors, setValidationErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
+  const [imagePreview, setImagePreview] = useState('');
 
   const handleChange = (e) => {
+    if (e.target.name === 'image') {
+      setImagePreview(e.target.value);
+    }
+
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -85,6 +90,7 @@ const AddProduct = () => {
           sex: '',
         });
         setValidationErrors({});
+        setImagePreview('');
       } else {
         console.error('Error:', response.statusText);
         setSuccessMessage('Failed to add dinosaur. Please try again.');
@@ -158,6 +164,10 @@ const AddProduct = () => {
             onChange={handleChange}
             required
           />
+          {validationErrors.image && (
+            <p className="error-message">{validationErrors.image}</p>
+          )}
+          {imagePreview && <img src={imagePreview} alt="Image Preview" />}
 
           <label>Sex:</label>
           <select name="sex" value={formData.sex} onChange={handleChange} required>

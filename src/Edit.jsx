@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './css/App.css';
 
-const Product = ({ product, onEdit }) => {
+const Product = ({ product, onEdit, onDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedProduct, setEditedProduct] = useState({ ...product });
 
@@ -37,6 +37,30 @@ const Product = ({ product, onEdit }) => {
     } catch (error) {
       console.error('Error updating dinosaur data:', error);
       alert('An unexpected error occurred');
+    }
+  };
+
+  const handleDelete = async () => {
+    const confirmDelete = window.confirm('Are you sure you want to delete this dinosaur?');
+
+    if (confirmDelete) {
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/dinosaurs/${editedProduct.id}`, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          // Usunięcie danych dinozaura zakończone sukcesem
+          onDelete(editedProduct.id);
+          alert('Dinosaur deleted successfully!');
+        } else {
+          // Błąd podczas usuwania danych dinozaura
+          alert('Error deleting dinosaur data');
+        }
+      } catch (error) {
+        console.error('Error deleting dinosaur data:', error);
+        alert('An unexpected error occurred');
+      }
     }
   };
 
@@ -105,9 +129,13 @@ const Product = ({ product, onEdit }) => {
         <div>
           <button onClick={handleSaveEdit}>Save</button>
           <button onClick={handleCancelEdit}>Cancel</button>
+          <button onClick={handleDelete}>Delete</button>
         </div>
       ) : (
-        <button onClick={handleEdit}>Edit</button>
+        <div>
+          <button onClick={handleEdit}>Edit</button>
+          <button onClick={handleDelete}>Delete</button>
+        </div>
       )}
     </div>
   );
@@ -116,12 +144,13 @@ const Product = ({ product, onEdit }) => {
 Product.propTypes = {
   product: PropTypes.object.isRequired,
   onEdit: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
-const ProductList = ({ products, onProductEdit }) => (
+const ProductList = ({ products, onProductEdit, onProductDelete }) => (
   <section id="product-list">
     {products.map((product) => (
-      <Product key={product.id} product={product} onEdit={onProductEdit} />
+      <Product key={product.id} product={product} onEdit={onProductEdit} onDelete={onProductDelete} />
     ))}
   </section>
 );
@@ -129,10 +158,10 @@ const ProductList = ({ products, onProductEdit }) => (
 const App = () => {
   const [data, setData] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  const [sortOrder, setSortOrder] = useState("");
-  const [typeFilter, setTypeFilter] = useState("");
-  const [sexFilter, setSexFilter] = useState("");
-  const [nameFilter, setNameFilter] = useState("");
+  const [sortOrder, setSortOrder] = useState('');
+  const [typeFilter, setTypeFilter] = useState('');
+  const [sexFilter, setSexFilter] = useState('');
+  const [nameFilter, setNameFilter] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -143,7 +172,7 @@ const App = () => {
           setCartItems(storedCartItems);
         }
 
-        const response = await fetch("http://127.0.0.1:5000/dinosaurs");
+        const response = await fetch('http://127.0.0.1:5000/dinosaurs');
         const data = await response.json();
         setData(data.dinosaurs);
       } catch (error) {
@@ -163,12 +192,18 @@ const App = () => {
     setData(updatedData);
   };
 
+  const handleProductDelete = (productId) => {
+    // Obsługa usunięcia produktu z listy
+    const updatedData = data.filter((product) => product.id !== productId);
+    setData(updatedData);
+  };
+
   const handleSortAsc = () => {
-    setSortOrder("asc");
+    setSortOrder('asc');
   };
 
   const handleSortDesc = () => {
-    setSortOrder("desc");
+    setSortOrder('desc');
   };
 
   const handleFilterType = (e) => {
@@ -189,7 +224,7 @@ const App = () => {
     .filter((product) => (!nameFilter || product.name.toLowerCase().includes(nameFilter.toLowerCase())));
 
   const sortedData = [...filteredData].sort((a, b) =>
-    sortOrder === "asc" ? a.price - b.price : b.price - a.price
+    sortOrder === 'asc' ? a.price - b.price : b.price - a.price
   );
 
   return (
@@ -221,7 +256,7 @@ const App = () => {
           </div>
         </div>
 
-        <ProductList products={sortedData} onProductEdit={handleProductEdit} />
+        <ProductList products={sortedData} onProductEdit={handleProductEdit} onProductDelete={handleProductDelete} />
       </div>
     </div>
   );
@@ -230,6 +265,7 @@ const App = () => {
 ProductList.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
   onProductEdit: PropTypes.func.isRequired,
+  onProductDelete: PropTypes.func.isRequired,
 };
 
 export default App;

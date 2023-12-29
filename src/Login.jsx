@@ -18,7 +18,7 @@ const Login = () => {
     if (response.ok) {
       const token = data.token;
       localStorage.setItem('token', token);
-      window.location.href = '/welcome';
+      window.location.href = '/';
     } else {
       setError(data.msg);
     }

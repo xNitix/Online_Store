@@ -2,10 +2,15 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './css/App.css';
 
-const Product = ({ product, addToCart }) => {
+const Product = ({ product, addToCart, isLoggedIn, updateLoginStatus  }) => {
   const handleAddToCart = () => {
-    addToCart(product);
-    alert('Product added to cart!');
+    if (isLoggedIn) {
+      alert('Produkt dodany do koszyka!');
+      addToCart(product);
+    } else {
+      alert('Koszyk dostępny jest tylko dla zalogowanych użytkowników');
+      updateLoginStatus();
+    }
   };
 
   return (
@@ -28,10 +33,10 @@ const Product = ({ product, addToCart }) => {
   );
 };
 
-const ProductList = ({ products, addToCart }) => (
+const ProductList = ({ products, addToCart, isLoggedIn, updateLoginStatus }) => (
   <section id="product-list">
     {products.map(product => (
-      <Product key={product.id} product={product} addToCart={addToCart} />
+      <Product key={product.id} product={product} addToCart={addToCart} isLoggedIn={isLoggedIn} updateLoginStatus={updateLoginStatus} />
     ))}
   </section>
 );
@@ -43,6 +48,9 @@ const App = () => {
   const [typeFilter, setTypeFilter] = useState("");
   const [sexFilter, setSexFilter] = useState("");
   const [nameFilter, setNameFilter] = useState("");
+
+  const token = localStorage.getItem('token');
+  const [isLoggedIn, setIsLoggedIn] = useState(token); 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -56,6 +64,8 @@ const App = () => {
         const response = await fetch("http://127.0.0.1:5000/dinosaurs");
         const data = await response.json();
         setData(data.dinosaurs);
+        const token = localStorage.getItem('token');
+        setIsLoggedIn(!!token); // Update isLoggedIn state
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -98,6 +108,11 @@ const App = () => {
     sortOrder === "asc" ? a.price - b.price : b.price - a.price
   );
 
+  const updateLoginStatus = () => {
+    const token = localStorage.getItem('token');
+    setIsLoggedIn(!!token); // Aktualizacja stanu zalogowania
+  };
+
   return (
     <div className="app-container">
       <div id="product-list">
@@ -127,7 +142,7 @@ const App = () => {
           </div>
         </div>
 
-        <ProductList products={sortedData} addToCart={addToCart} />
+        <ProductList products={sortedData} addToCart={addToCart} isLoggedIn={isLoggedIn} updateLoginStatus={updateLoginStatus} />
       </div>
     </div>
   );

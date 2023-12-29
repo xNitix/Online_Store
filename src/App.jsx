@@ -101,29 +101,32 @@ const App = () => {
   return (
     <div className="app-container">
       <div id="product-list">
-        <div className="filters">
-          <select value={typeFilter} onChange={handleFilterType}>
-            <option value="">All Types</option>
-            <option value="land">Land</option>
-            <option value="water">Water</option>
-            <option value="flying">Flying</option>
-          </select>
-          <select value={sexFilter} onChange={handleFilterSex}>
-            <option value="">All Sexes</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-          <input
-            type="text"
-            placeholder="Filter by Name"
-            value={nameFilter}
-            onChange={handleFilterName}
-          />
+        <div id="menu-buttons">
+          <div className="filters">
+            <select value={typeFilter} onChange={handleFilterType}>
+              <option value="">All Types</option>
+              <option value="land">Land</option>
+              <option value="water">Water</option>
+              <option value="flying">Flying</option>
+            </select>
+            <select value={sexFilter} onChange={handleFilterSex}>
+              <option value="">All Sexes</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <input
+              type="text"
+              placeholder="Filter by Name"
+              value={nameFilter}
+              onChange={handleFilterName}
+            />
+          </div>
+          <div className="sort-buttons">
+            <button onClick={handleSortAsc}>Sort Ascending</button>
+            <button onClick={handleSortDesc}>Sort Descending</button>
+          </div>
         </div>
-        <div className="sort-buttons">
-          <button onClick={handleSortAsc}>Sort Ascending</button>
-          <button onClick={handleSortDesc}>Sort Descending</button>
-        </div>
+
         <ProductList products={sortedData} addToCart={addToCart} />
       </div>
     </div>

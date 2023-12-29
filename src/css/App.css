@@ -47,6 +47,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #product-list .product-card img {
@@ -130,4 +131,24 @@ body {
 
 .product-card img {
   max-width: 50%;
+}
+
+#menu-buttons{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: left;
+}
+
+.filters
+{
+  width: 50%;
+  text-align: left;
+}
+
+.sort-buttons
+{
+  margin-top: 5px;
+  width: 50%;
+  text-align: right;
 }

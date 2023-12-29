@@ -194,6 +194,30 @@ def delete_dinosaur(dinosaur_id):
     return jsonify({"message": "Dinosaur deleted"})    
     
 
+@app.route('/dinosaurs/<int:dinosaur_id>', methods=['PUT'])
+def update_dinosaur(dinosaur_id):
+    data = request.json
+    dinosaur = Dinosaur.query.get_or_404(dinosaur_id)
+
+    if 'name' in data:
+        dinosaur.name = data['name']
+    if 'description' in data:
+        dinosaur.description = data['description']
+    if 'type' in data:
+        dinosaur.type = data['type']
+    if 'price' in data:
+        dinosaur.price = data['price']
+    if 'level' in data:
+        dinosaur.level = data['level']
+    if 'image' in data:
+        dinosaur.image = data['image']
+    if 'sex' in data:
+        dinosaur.sex = data['sex']
+
+    db.session.commit()
+    return jsonify({"message": "Dinosaur updated"}), 200
+
+
 #-----------------------MAIN-----------------------# 
 if __name__ == '__main__':
     with app.app_context():

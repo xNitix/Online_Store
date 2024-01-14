@@ -6,6 +6,7 @@ import Login from './login';
 import Register from './Register';
 import AddProduct from './AddProduct';
 import Cart from './Cart';
+import Orders from './Orders';
 import './css/Top.css';
 import { jwtDecode } from 'jwt-decode';
 
@@ -21,7 +22,7 @@ const Top = () => {
   }
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
+    localStorage.clear();
     window.location.href = '/';
   };
 
@@ -62,6 +63,11 @@ const Top = () => {
                   <Link to="/Cart">Cart</Link>
                 </li>
               )}
+              {token && isAdmin && (
+                <li>
+                  <Link to="/orders">Orders</Link>
+                </li>
+              )}
               {token && (
               <li className="logout-button">
                 <button onClick={handleLogout}>Logout</button>
@@ -84,6 +90,7 @@ const Top = () => {
           <Route path="/" element={<h1>Witaj na stronie startowej!</h1>} />
           {token && isAdmin && <Route path="/edit" element={<Edit />} />}
           {token && isAdmin && <Route path="/add" element={<AddProduct />} />}
+          {isAdmin && <Route path="/orders" element={<Orders />} />}
         </Routes>
       </div>
     </Router>

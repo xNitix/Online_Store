@@ -6,6 +6,9 @@ from flask_marshmallow import Marshmallow
 from sqlalchemy import Column, Integer, String, Boolean, Double
 from marshmallow import post_load
 import bcrypt
+from datetime import datetime
+from flask_jwt_extended import verify_jwt_in_request
+
 
 
 app = Flask(__name__)
@@ -42,10 +45,18 @@ class Dinosaur(db.Model):
     level = Column(Integer)
     image = Column(String)
     sex = Column(String)
-
+    
     @post_load
     def make_user(self, data, **kwargs):
         return Person(**data)
+
+    
+class Orders(db.Model):
+    id = Column(Integer, primary_key=True)
+    user_id = Column(String)
+    total_price = Column(Double)
+    dinosaur_names = Column(String)
+    
 
 
 #-----------------------SCHEMAS-----------------------#
@@ -59,7 +70,12 @@ class DinosaurSchema(ma.SQLAlchemyAutoSchema):
         model = Dinosaur
         fields = ("id", "name", "description", "type", "price", "level", "image", "sex")
         
+class OrdersSchema(ma.SQLAlchemyAutoSchema):
+    class Meta:
+        model = Orders
+        fields = ("id", "user_id", "total_price", "dinosaur_names")
 
+        
 #-----------------------ROUTES-----------------------#        
 
 #-----------------------Users------------------------#
@@ -216,6 +232,66 @@ def update_dinosaur(dinosaur_id):
 
     db.session.commit()
     return jsonify({"message": "Dinosaur updated"}), 200
+
+#--------------------Orders-----------------------#
+@app.route('/api/orders', methods=['POST'])
+def create_order():
+    try:
+        # Pobierz wartość nagłówka "Authorization"
+        authorization_header = request.headers.get('Authorization')
+        print('Authorization Header:', authorization_header)
+
+        verify_jwt_in_request()
+        current_user = get_jwt_identity()
+        print('get_jwt_identity:', current_user)
+
+        user = Person.query.filter_by(login=current_user).first()
+
+        data = request.json
+        dinosaur_ids = data.get('dinosaur_ids', [])
+
+        dinosaurs = Dinosaur.query.filter(Dinosaur.id.in_(dinosaur_ids)).all()
+        dinosaur_names1 = ', '.join([dinosaur.name for dinosaur in dinosaurs])  # Łączymy nazwy dinozaurów w jeden ciąg znaków
+        total_price = sum(dinosaur.price for dinosaur in dinosaurs)
+        
+        new_order = Orders(user_id=user.login, total_price=total_price, dinosaur_names=dinosaur_names1)
+        db.session.add(new_order)
+        db.session.commit()
+
+        return jsonify({"message": "Order created"}), 201
+    except Exception as e:
+        print(f"Error creating order: {str(e)}")
+        return jsonify({"error": "Internal Server Error"}), 500
+
+
+@app.route('/api/orders', methods=['GET'])
+def get_all_orders():
+    try:
+        # Pobierz wszystkie zamówienia z bazy danych
+        orders = Orders.query.all()
+
+        # Przekształć zamówienia na format JSON za pomocą schematu OrderSchema
+        orders_schema = OrdersSchema(many=True)
+        serialized_orders = orders_schema.dump(orders)
+
+        # Zwróć zamówienia w formie JSON
+        return jsonify({"orders": serialized_orders})
+
+    except Exception as e:
+        # W razie błędu zwróć odpowiednią wiadomość lub kod błędu
+        return jsonify({"error": str(e)}), 500
+    
+@app.route('/api/orders/del', methods=['DELETE'])
+def delete_all_orders():
+    try:
+        # Usuń wszystkie zamówienia
+        Orders.query.delete()
+        db.session.commit()
+
+        return jsonify({"message": "All orders deleted"}), 200
+    except Exception as e:
+        print(f"Error deleting all orders: {str(e)}")
+        return jsonify({"error": "Internal Server Error"}), 500
 
 
 #-----------------------MAIN-----------------------# 

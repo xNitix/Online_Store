@@ -36,36 +36,36 @@ const Top = () => {
           <nav className="top-menu">
             <ul>
               <li>
-                <Link to="/">Strona startowa </Link>
+              <Link to="/"><img src="src/jpg/icon-home-button.png" alt="Edit Icon" className='TopMenuIcons' /></Link>
               </li>
               {!isAdmin && (
               <li>
-                <Link to="/app">Products</Link>
+                <Link to="/app"><img src="src/jpg/icon-produkty.png" alt="Edit Icon" className='TopMenuIcons' /></Link>
               </li>
               )}
               {token && isAdmin && (
                 <li>
-                  <Link to="/users">Users</Link>
+                  <Link to="/users"><img src="src/jpg/icon-user.png" alt="Edit Icon" className='TopMenuIcons' /></Link>
                 </li>
               )}
               {token && isAdmin && (
                 <li>
-                  <Link to="/edit">ProductEdit</Link>
+                  <Link to="/edit"><img src="src/jpg/icon-edit.png" alt="Edit Icon" className='TopMenuIcons' /></Link>
                 </li>
               )}
               {token && isAdmin && (
                 <li>
-                  <Link to="/add">AddProduct</Link>
+                  <Link to="/add"><img src="src/jpg/icon-add-file.png" alt="Edit Icon" className='TopMenuIcons' /></Link>
                 </li>
               )}
               {token && !isAdmin && (
                 <li>
-                  <Link to="/Cart">Cart</Link>
+                  <Link to="/Cart"><img src="src/jpg/icon-cart.png" alt="Edit Icon" className='TopMenuIcons' /></Link>
                 </li>
               )}
               {token && isAdmin && (
                 <li>
-                  <Link to="/orders">Orders</Link>
+                  <Link to="/orders"><img src="src/jpg/icon-costam.png" alt="Edit Icon" className='TopMenuIcons' /></Link>
                 </li>
               )}
               {token && (
@@ -74,7 +74,7 @@ const Top = () => {
               </li>
               )}
               {!token && (
-              <li className="login-button2">
+              <li className="logout-button">
                 <button onClick={handleLogIn}>Login</button>
               </li>
               )}

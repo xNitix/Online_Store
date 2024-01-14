@@ -20,24 +20,29 @@ body {
   margin-bottom: 20px;
 }
 
+#product-list2 {
+  background-image: url('../jpg/tlozawartosc.jpg');
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgb(229, 63, 8); /* Dodaj pomarańczowy cień */
+}
+
 #product-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
-  background-color: rgba(252, 251, 241, 0.963);
   padding: 0 20px;
   border-radius: 10px;
   box-sizing: border-box;
+  min-height: 1150px;
 }
 
 .product-card {
-  background-color: white;
-  color: black;
+  background-color: black;
   margin: 10px;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(242, 96, 6, 0.5);
   transition: 0.3s;
   flex: 1 1 calc(25% - 20px);
   height: auto;
@@ -46,7 +51,10 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.product-card img{
+  border-radius: 10px;
 }
 
 #product-list .product-card img {
@@ -115,8 +123,8 @@ body {
 }
 
 .product-card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  transform: scale(1.05);
+  box-shadow: 0 8px 16px 0 rgba(222, 4, 4, 0.4);
+  transform: scale(1.02);
 }
 
 #product-list h2 {
@@ -152,9 +160,32 @@ body {
 .sort-buttons
 {
   margin-top: 5px;
-
   width: 50%;
   text-align: right;
+}
+
+.sort-buttons button 
+{
+  width: 150px;
+  height: 50px;
+  margin-top: 10px;
+}
+
+button {
+  background: url('../jpg/button-tlo.png');
+  background-size: 100% 100%; /* Rozciągaj obrazek na 100% szerokości i wysokości */
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 80%;
+  transition: opacity 0.3s, transform 0.3s;
+  margin: 2px 4px;
+
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .edit-delete-button

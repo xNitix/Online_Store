@@ -115,7 +115,7 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <div id="product-list">
+      <div id="product-list2">
         <div id="menu-buttons">
           <div className="filters">
             <select value={typeFilter} onChange={handleFilterType}>

@@ -1,10 +1,12 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
   color: rgba(144, 143, 143, 0.87);
-  background-color: #242424;
+  background-image: url('../jpg/tlo.jpg');
+  background-size: cover; 
+  background-attachment: fixed;
   font-synthesis: none;
 }
 
@@ -32,4 +34,55 @@ h1 {
 #root{
   width: 80%;
   text-align: center;
+}
+
+select {
+  background: url('../jpg/button-tlo.png');
+  background-size: 100% 100%; /* Rozciągaj obrazek na 100% szerokości i wysokości */
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 80%;
+  transition: opacity 0.3s, transform 0.3s;
+  margin: 2px 4px;
+  width: 150px;
+  height: 50px;
+  margin-top: 10px;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+select option {
+  background-color: rgba(0, 40, 59, 0.87); /* Ustaw kolor tła dla opcji */
+  border-radius: 5px; /* Zaokrąglij rogi opcji */
+}
+
+select:focus {
+  outline: none; /* Usunięcie obramowania po kliknięciu */
+}
+
+input{
+  background: url('../jpg/button-tlo.png');
+  background-size: 100% 100%; /* Rozciągaj obrazek na 100% szerokości i wysokości */
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 80%;
+  transition: opacity 0.3s, transform 0.3s;
+  margin: 2px 4px;
+  width: 150px;
+  height: 30px;
+  margin-top: 10px;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input:focus {
+  outline: none; /* Usunięcie obramowania po kliknięciu */
 }

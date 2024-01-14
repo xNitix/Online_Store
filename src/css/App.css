@@ -193,13 +193,19 @@ button {
   width: 45%;
   margin-left: 2px;
 }
-
-#BADCOLOR
-{
-  background-color: rgb(230, 94, 30);
-}
-
 .marginesy
 {
   margin-right: 3px;
+}
+
+.edit-field input
+{
+  width: 90%;
+  margin: auto;
+}
+
+.edit-field select
+{
+  width: 100%;
+  margin: auto;
 }

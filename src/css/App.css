@@ -224,3 +224,8 @@ button {
   width: 100%;
   margin: auto;
 }
+
+#edytowalne
+{
+  max-height: 1000px !important;
+}

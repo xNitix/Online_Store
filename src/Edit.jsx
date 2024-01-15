@@ -91,8 +91,10 @@ const Product = ({ product, onEdit, onDelete }) => {
   };
 
   return (
-    <div className="product-card">
-      <img src={editedProduct.image} alt={editedProduct.name} />
+    <div className="product-card" id="edytowalne">
+      <div className="product-images">
+        <img src={editedProduct.image} alt={editedProduct.name} />
+      </div>
       <div className="product-info">
         {isEditing ? (
           <>
@@ -149,7 +151,6 @@ const Product = ({ product, onEdit, onDelete }) => {
         ) : (
           <>
             <h1>{editedProduct.name}</h1>
-            <p>Description: {editedProduct.description}</p>
             <div>
               <h2>Type: {editedProduct.type}</h2>
               <h2>Sex: {editedProduct.sex}</h2>

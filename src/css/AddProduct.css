@@ -9,15 +9,15 @@
 .form-container {
   width: 60%; 
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   max-width: 525px;
-  background-color: rgba(252, 251, 241, 0.963);
   margin-top: 120px;
 }
 
-h2 {
+.form-container h2 {
+  margin-top: 25px ;
+  margin-bottom: 0;
   text-align: center;
 }
 
@@ -29,24 +29,33 @@ form {
 label {
   margin-top: 10px;
   font-weight: bold;
-  color: #555;
+
 }
 
-input,
-textarea,
-select {
-  padding: 8px;
-  margin: 5px 0 15px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+form input{
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
 }
+
+form select{
+  width: 90%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 
 textarea
 {
   resize: none;
 }
 
-
+.form-container button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
 
 
 

@@ -8,8 +8,8 @@ table {
   
   /* Stylizacja nagłówków tabeli */
   th {
-    background-color: #f2f2f2;
-    color: #333;
+
+    color: #eee8e8;
     font-weight: bold;
     padding: 8px;
     font-size: 20px;
@@ -19,13 +19,9 @@ table {
   td {
     padding: 8px;
     border-bottom: 1px solid #ddd;
-    color: #333;
+    color: #eee8e8;
   }
   
-  /* Stylizacja nieparzystych wierszy */
-  tr:nth-child(odd) {
-    background-color: #f9f9f9;
-  }
   
   /* Stylizacja przycisku do usuwania */
   .delete-button {
@@ -43,8 +39,26 @@ table {
   
   #table-container
   {
+    background: url('../jpg/Formularz-tlo.png');
+    background-size: 100% 100%;
     width: 64%;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    padding: 25px;
+    min-width: 420px;
+    max-width: 700px;
+  }
+
+
+#table-container table
+  {
+    background-color: transparent;
+    
+  }
+
+  #table-container table td,
+  #table-container table th {
+    border-bottom: 1px solid #13b6e2; /* Ustawienie koloru dolnej granicy na szary (#ddd) */
+    padding: 8px; /* Dodanie wewnętrznego odstępu dla lepszego wyglądu */
   }

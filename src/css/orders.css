@@ -1,0 +1,39 @@
+.ordersDiv {
+    background: url('../jpg/Formularz-tlo.png');
+    background-size: 100% 100%;
+    margin: auto;
+    padding: 28px;
+    padding-top: 32px;
+    border-radius: 10px;
+    transition: 0.3s;
+    flex: 1 1 calc(25% - 20px);
+    height: auto;
+    min-width: 500px;
+    min-height: 450px;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .ordersDiv h1 {
+    font-size: 24px;
+    color:#ddd; 
+    margin-bottom: 16px;
+  }
+  
+  .ordersDiv ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .ordersDiv li {
+    border: 1px solid #30cff7; 
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .ordersDiv li:hover {
+    background-color: #db4409; 
+  }

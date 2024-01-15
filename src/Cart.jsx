@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './css/Cart.css';
+import './css/Orders.css';
 
 const Cart = () => {
   const [storedCartItems, setStoredCartItems] = useState([]);
@@ -65,13 +65,13 @@ const Cart = () => {
   };
 
   return (
-    <div className="cart-container">
+    <div className="ordersDiv">
       <h1>Shopping Cart</h1>
       <ul>
         {storedCartItems.length > 0 ? (
           storedCartItems.map((item, index) => (
             <li key={index}>
-              {item.name} - {item.price}
+              {item.name} - {item.price}$
               <button onClick={() => removeFromCart(index)}>Remove</button>
             </li>
           ))

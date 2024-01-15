@@ -91,17 +91,23 @@ const Product = ({ product, onEdit, onDelete }) => {
   };
 
   return (
-    <div className="product-card" id={isEditing ? "edytowalne" : undefined}>
-      <div className={isEditing ? "product-images2" : "product-images"}>
+    <div className="product-card" id="edytowalne">
+      <div className="product-images">
         <img src={editedProduct.image} alt={editedProduct.name} />
       </div>
-      <div className="product-info" id={isEditing ? "wysokosc" : undefined}>
+      <div className="product-info">
         {isEditing ? (
           <>
             <div className="edit-field">
               <label>Name:</label>
               <input type="text" name="name" value={editedProduct.name} onChange={handleInputChange} />
             </div>
+
+            <div className="edit-field">
+              <label>Description:</label>
+              <textarea name="description" value={editedProduct.description} onChange={handleInputChange} />
+            </div>
+
             <div className="edit-field">
               <label>Type:</label>
               <select name="type" value={editedProduct.type} onChange={handleInputChange}>

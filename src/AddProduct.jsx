@@ -109,7 +109,7 @@ const AddProduct = () => {
           {validationErrors.image && (
             <p className="error-message">{validationErrors.image}</p>
           )}
-          {imagePreview && <img src={imagePreview} alt="Image Preview" />} 
+          {imagePreview && <img src={imagePreview} alt="Image Preview" className='product-image'/>} 
 
           <label>Image:</label>
           <input

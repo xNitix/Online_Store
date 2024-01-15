@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './css/Cart.css';
 
 const Cart = () => {
   const [storedCartItems, setStoredCartItems] = useState([]);
@@ -79,7 +80,7 @@ const Cart = () => {
         )}
       </ul>
       {storedCartItems.length > 0 && (
-        <button onClick={handleCheckout}>Checkout</button>
+        <button className='DownButton' onClick={handleCheckout}>Checkout</button>
       )}
     </div>
   );

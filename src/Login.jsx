@@ -25,7 +25,7 @@ const Login = () => {
   };
 
   return (
-  <div>
+  <div className='form-container'>
     <form className="login-form" onSubmit={handleSubmit}>
       <input
         type="text"

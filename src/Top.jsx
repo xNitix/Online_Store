@@ -9,6 +9,8 @@ import Cart from './Cart';
 import Orders from './Orders';
 import './css/Top.css';
 import { jwtDecode } from 'jwt-decode';
+import './css/Cart.css';
+
 
 const Top = () => {
   const token = localStorage.getItem('token');
@@ -87,7 +89,13 @@ const Top = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           {token && !isAdmin && <Route path="/Cart" element={<Cart />} />}
-          <Route path="/" element={<h1>Witaj na stronie startowej!</h1>} />
+          <Route path="/" 
+            element={
+                    <div className="cart-container"> 
+                        <h1>Witaj na stronie startowej!</h1>
+                    </div>
+                    } 
+          />
           {token && isAdmin && <Route path="/edit" element={<Edit />} />}
           {token && isAdmin && <Route path="/add" element={<AddProduct />} />}
           {isAdmin && <Route path="/orders" element={<Orders />} />}

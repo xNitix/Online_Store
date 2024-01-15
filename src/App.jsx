@@ -15,10 +15,12 @@ const Product = ({ product, addToCart, isLoggedIn, updateLoginStatus  }) => {
 
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.name} />
+      <div className="product-images">
+        <img src={product.image} alt={product.name} />
+      </div>
       <div className="product-info">
         <h1>{product.name}</h1>
-        <p>Description: {product.description}</p>
+        
         <div>
           <h2>Type: {product.type}</h2>
           <h2>Sex: {product.sex}</h2>

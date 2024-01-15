@@ -35,48 +35,50 @@ const Register = () => {
   };
 
   return (
-    <div id="register-container">
-      <form className="register-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Login"
-          className="register-input"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="register-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Repeat password"
-          className="register-input"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Name"
-          className="register-input"
-          value={firstname}
-          onChange={(e) => setFirstname(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Surname"
-          className="register-input"
-          value={lastname}
-          onChange={(e) => setLastname(e.target.value)}
-        />
-        {error && <p className="register-error">{error}</p>}
-        <button type="submit" className="login-page-button">
-          Zarejestruj się
-        </button>
-      </form>
+    <div className='form-container'>
+        <div id="register-container">
+          <form className="register-form" onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Login"
+              className="register-input"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              className="register-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Repeat password"
+              className="register-input"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Name"
+              className="register-input"
+              value={firstname}
+              onChange={(e) => setFirstname(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Surname"
+              className="register-input"
+              value={lastname}
+              onChange={(e) => setLastname(e.target.value)}
+            />
+            {error && <p className="register-error">{error}</p>}
+            <button type="submit" className="login-page-button">
+              Zarejestruj się
+            </button>
+          </form>
+        </div>
     </div>
   );
 };

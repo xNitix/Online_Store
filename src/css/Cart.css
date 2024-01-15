@@ -1,0 +1,21 @@
+.cart-container{
+    background: url('../jpg/Formularz-tlo.png');
+    background-size: 100% 100%;
+    width: 80%;
+    max-width: 650px;
+    min-height: 800px;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 40px;
+    opacity: 95%;
+
+}
+
+.DownButton
+{
+
+    text-align: center;
+    margin: auto;
+    min-width: 75px;
+}

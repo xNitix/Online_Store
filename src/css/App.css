@@ -23,7 +23,7 @@ body {
 #product-list2 {
   background-image: url('../jpg/tlozawartosc.jpg');
   border-radius: 10px;
-  box-shadow: 0 0 10px rgb(229, 63, 8); /* Dodaj pomarańczowy cień */
+  box-shadow: 0 0 10px rgb(229, 63, 8); 
 }
 
 #product-list {
@@ -203,7 +203,7 @@ body {
 
 button {
   background: url('../jpg/button-tlo.png');
-  background-size: 100% 100%; /* Rozciągaj obrazek na 100% szerokości i wysokości */
+  background-size: 100% 100%; 
   background-repeat: no-repeat;
   background-position: center;
   opacity: 80%;

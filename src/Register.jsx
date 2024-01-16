@@ -24,11 +24,9 @@ const Register = () => {
 
     const data = await response.json();
     if (response.ok) {
-        // Pokazanie alertu o poprawnym utworzeniu konta
         alert('Konto zostało pomyślnie utworzone. Zaloguj się.');
 
-        // Przekierowanie użytkownika na stronę logowania
-        window.location.href = '/'; // Tutaj ustaw adres logowania
+        window.location.href = '/'; 
     } else {
         setError(data.msg);
     }

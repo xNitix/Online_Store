@@ -1,7 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-//import Kot from './Kot.jsx'
-//import App from './App.jsx'
 import Top from './Top.jsx'
 import './css/index.css'
 

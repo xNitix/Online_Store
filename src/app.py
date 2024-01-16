@@ -100,7 +100,6 @@ def protected():
     current_user = get_jwt()
     is_admin = current_user.get('isAdmin', False)
     if is_admin:
-        # Tutaj wykonaj odpowiednie operacje tylko dla admina
         return jsonify({"message": "Admin access granted"})
     else:
         return jsonify({"message": "User access granted"})
@@ -122,7 +121,7 @@ def register():
         surname=data['lastname'],
         login=data['username'],
         password=bcrypt.hashpw(data['password'].encode('utf-8'), bcrypt.gensalt()),
-        isAdmin=False  # Ustalono na stałe jako False, możesz to zmienić
+        isAdmin=False 
     )
     db.session.add(new_person)
     db.session.commit()
@@ -237,7 +236,6 @@ def update_dinosaur(dinosaur_id):
 @app.route('/api/orders', methods=['POST'])
 def create_order():
     try:
-        # Pobierz wartość nagłówka "Authorization"
         authorization_header = request.headers.get('Authorization')
         print('Authorization Header:', authorization_header)
 
@@ -251,7 +249,7 @@ def create_order():
         dinosaur_ids = data.get('dinosaur_ids', [])
 
         dinosaurs = Dinosaur.query.filter(Dinosaur.id.in_(dinosaur_ids)).all()
-        dinosaur_names1 = ', '.join([dinosaur.name for dinosaur in dinosaurs])  # Łączymy nazwy dinozaurów w jeden ciąg znaków
+        dinosaur_names1 = ', '.join([dinosaur.name for dinosaur in dinosaurs])  
         total_price = sum(dinosaur.price for dinosaur in dinosaurs)
         
         new_order = Orders(user_id=user.login, total_price=total_price, dinosaur_names=dinosaur_names1)
@@ -267,24 +265,19 @@ def create_order():
 @app.route('/api/orders', methods=['GET'])
 def get_all_orders():
     try:
-        # Pobierz wszystkie zamówienia z bazy danych
         orders = Orders.query.all()
 
-        # Przekształć zamówienia na format JSON za pomocą schematu OrderSchema
         orders_schema = OrdersSchema(many=True)
         serialized_orders = orders_schema.dump(orders)
 
-        # Zwróć zamówienia w formie JSON
         return jsonify({"orders": serialized_orders})
 
     except Exception as e:
-        # W razie błędu zwróć odpowiednią wiadomość lub kod błędu
         return jsonify({"error": str(e)}), 500
     
 @app.route('/api/orders/del', methods=['DELETE'])
 def delete_all_orders():
     try:
-        # Usuń wszystkie zamówienia
         Orders.query.delete()
         db.session.commit()
 

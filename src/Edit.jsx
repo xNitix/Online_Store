@@ -211,8 +211,6 @@ const App = () => {
   }, []);
 
   const handleProductEdit = (editedProduct) => {
-    // Obsługa zapisu zaktualizowanego produktu do serwera
-    // Poniżej znajdziesz przykładową funkcję, którą możesz dostosować do swoich potrzeb
     const updatedData = data.map((product) =>
       product.id === editedProduct.id ? editedProduct : product
     );
@@ -221,7 +219,6 @@ const App = () => {
   };
 
   const handleProductDelete = (productId) => {
-    // Obsługa usunięcia produktu z listy
     const updatedData = data.filter((product) => product.id !== productId);
     setData(updatedData);
   };

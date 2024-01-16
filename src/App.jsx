@@ -71,7 +71,7 @@ const App = () => {
         const data = await response.json();
         setData(data.dinosaurs);
         const token = localStorage.getItem('token');
-        setIsLoggedIn(!!token); // Update isLoggedIn state
+        setIsLoggedIn(!!token); 
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -116,7 +116,7 @@ const App = () => {
 
   const updateLoginStatus = () => {
     const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token); // Aktualizacja stanu zalogowania
+    setIsLoggedIn(!!token); 
   };
 
   return (

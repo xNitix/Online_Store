@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import App from './App';
-import Kot from './Kot';
+import UsersList from './UsersList';
 import Edit from './Edit';
 import Login from './login';
 import Register from './Register';
@@ -86,7 +86,7 @@ const Top = () => {
       
         <Routes>
           {!isAdmin && <Route path="/app" element={<App />} />}
-          {isAdmin && <Route path="/users" element={<Kot />} />}
+          {isAdmin && <Route path="/users" element={<UsersList />} />}
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           {token && !isAdmin && <Route path="/Cart" element={<Cart />} />}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./css/Kot.css";
+import "./css/UsersList.css";
 
 const UsersPage = () => {
   const [users, setUsers] = useState([]);

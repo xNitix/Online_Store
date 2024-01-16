@@ -47,40 +47,42 @@ const UsersPage = () => {
   }, []);
 
   return (
-    <div id="table-container">
-      <h1>Lista użytkowników</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Login</th>
-            <th>Imię</th>
-            <th>Nazwisko</th>
-            <th>Rola</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.map(user => (
-            <tr key={user.id}>
-              <td>{user.login}</td>
-              <td>{user.name}</td>
-              <td>{user.surname}</td>
-              <td>
-                {user.isAdmin ? (
-                  <span>Admin</span>
-                ) : (
-                  <select
-                    value={user.isAdmin ? 'Admin' : 'User'}
-                    onChange={e => changeRole(user.id, e.target.value)}
-                  >
-                    <option value="Admin">Admin</option>
-                    <option value="User">User</option>
-                  </select>
-                )}
-              </td>
+    <div className="marginCon">
+      <div id="table-container">
+        <h1>Lista użytkowników</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Login</th>
+              <th>Imię</th>
+              <th>Nazwisko</th>
+              <th>Rola</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {users.map(user => (
+              <tr key={user.id}>
+                <td>{user.login}</td>
+                <td>{user.name}</td>
+                <td>{user.surname}</td>
+                <td>
+                  {user.isAdmin ? (
+                    <span>Admin</span>
+                  ) : (
+                    <select
+                      value={user.isAdmin ? 'Admin' : 'User'}
+                      onChange={e => changeRole(user.id, e.target.value)}
+                    >
+                      <option value="Admin">Admin</option>
+                      <option value="User">User</option>
+                    </select>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

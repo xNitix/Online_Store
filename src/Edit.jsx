@@ -149,7 +149,7 @@ const Product = ({ product, onEdit, onDelete }) => {
               <h2>Type: {editedProduct.type}</h2>
               <h2>Sex: {editedProduct.sex}</h2>
               <h2>Level: {editedProduct.level}</h2>
-              <h2>Price: {editedProduct.price}</h2>
+              <h3>Price: {editedProduct.price}$</h3>
             </div>
           </>
         )}

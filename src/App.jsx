@@ -29,7 +29,7 @@ const Product = ({ product, addToCart, isLoggedIn, updateLoginStatus  }) => {
           <h2>Type: {product.type}</h2>
           <h2>Sex: {product.sex}</h2>
           <h2>Level: {product.level}</h2>
-          <h2>Price: {product.price}</h2>
+          <h3>Price: {product.price}$</h3>
         </div>
       </div>
       <button onClick={handleAddToCart}>

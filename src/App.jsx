@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useNavigate } from 'react-router-dom';
 import './css/App.css';
 
 const Product = ({ product, addToCart, isLoggedIn, updateLoginStatus  }) => {
+  const navigate = useNavigate();
+
   const handleAddToCart = () => {
     if (isLoggedIn) {
       alert('Produkt dodany do koszyka!');
@@ -10,6 +13,7 @@ const Product = ({ product, addToCart, isLoggedIn, updateLoginStatus  }) => {
     } else {
       alert('Koszyk dostępny jest tylko dla zalogowanych użytkowników');
       updateLoginStatus();
+      navigate('/login');
     }
   };
 

@@ -20,18 +20,14 @@ const Cart = () => {
     const token = localStorage.getItem('token');
     if (!token) {
       console.error('Missing JWT token');
-      // Dodaj odpowiednią obsługę braku tokena, np. przekierowanie do strony logowania
+
       return;
     }
-    //const decodedToken = jwtDecode(token);
-    //console.log('User ID:', decodedToken.sub);
-    //console.log('Is Admin:', decodedToken.isAdmin);
-    // Przygotowanie danych zamówienia do wysłania na serwer
+
     const orderData = {
       dinosaur_ids: storedCartItems.map(item => item.id), 
     };
 
-    // Przykładowe użycie fetch do wysłania danych na serwer
     fetch('http://127.0.0.1:5000/api/orders', {
       method: 'POST',
       headers: {
@@ -55,12 +51,12 @@ const Cart = () => {
         localStorage.removeItem('cartItems');
       } catch (error) {
         console.error('Error parsing JSON:', error);
-        // Dodaj odpowiednią obsługę błędów parsowania JSON-a
+
       }
     })
     .catch(error => {
       console.error('Error creating order:', error);
-      // Dodaj odpowiednią obsługę błędów
+   
     });
   };
 

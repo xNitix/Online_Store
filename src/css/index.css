@@ -38,7 +38,7 @@ h1 {
 
 select {
   background: url('../jpg/button-tlo.png');
-  background-size: 100% 100%; /* Rozciągaj obrazek na 100% szerokości i wysokości */
+  background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center;
   opacity: 80%;
@@ -56,17 +56,17 @@ select {
 }
 
 select option {
-  background-color: rgba(0, 40, 59, 0.87); /* Ustaw kolor tła dla opcji */
-  border-radius: 5px; /* Zaokrąglij rogi opcji */
+  background-color: rgba(0, 40, 59, 0.87); 
+  border-radius: 5px; 
 }
 
 select:focus {
-  outline: none; /* Usunięcie obramowania po kliknięciu */
+  outline: none; 
 }
 
 input{
   background: url('../jpg/button-tlo.png');
-  background-size: 100% 100%; /* Rozciągaj obrazek na 100% szerokości i wysokości */
+  background-size: 100% 100%; 
   background-repeat: no-repeat;
   background-position: center;
   opacity: 80%;
@@ -85,7 +85,7 @@ input{
 
 textarea{
   background: url('../jpg/button-tlo.png');
-  background-size: 100% 100%; /* Rozciągaj obrazek na 100% szerokości i wysokości */
+  background-size: 100% 100%; 
   background-repeat: no-repeat;
   background-position: center;
   opacity: 80%;
@@ -108,5 +108,5 @@ textarea:focus{
 }
 
 input:focus {
-  outline: none; /* Usunięcie obramowania po kliknięciu */
+  outline: none; 
 }
